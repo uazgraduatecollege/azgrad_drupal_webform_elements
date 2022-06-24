@@ -1,0 +1,7 @@
+name: AZ Grad Webform Elements
+type: module
+description: Grad College Custom Webform Elements for Quickstart 2 & Drupal 9+
+core_version_requirement: ^8 || ^9
+package: custom
+dependencies:
+  - drupal:webform

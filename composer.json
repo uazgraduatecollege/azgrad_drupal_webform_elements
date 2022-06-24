@@ -1,0 +1,18 @@
+{
+    "name": "uazgraduatecollege/azgrad_drupal_webform_elements",
+    "description": "Custom Grad College select options for academic plans, terms, campuses, etc",
+    "type": "drupal-custom-module",
+    "autoload": {
+        "psr-4": {
+            "Uazgraduatecollege\\GradDrupalCommonFooter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "UArizona Graduate College IT"
+        }
+    ],
+    "require": {
+        "drupal/core": "^9.2.13"
+    }
+}
