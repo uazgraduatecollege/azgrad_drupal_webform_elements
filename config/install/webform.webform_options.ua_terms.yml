@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ua_terms
+label: 'UA Terms'
+category: ''
+likert: false
+options: ''

@@ -2,19 +2,218 @@
 
 /**
  * @file
- * Contains grad_drupal_common_footer.module.
+ * Contains azgrad_drupal_webform.module.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
 
 
-/**
- * Implements hook_theme().
- */
-function azgrad_drupal_webform_elements() {
-  $theme['azgrad_drupal_webform_elements'] = [
-    'template' => 'azgrad_drupal_webform_elements',
-  ];
+function azgrad_drupal_webform_elements_webform_options_ua_doctoral_plans_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/simpleplans.json',
+    'ua_doctoral_plans',
+    function(array $response) {
+      $programs = [];
+      foreach ($response as $next_plan) {  
+        if ($next_plan['degreeType'] == 'Doctorate') {
+          $programs[$next_plan['gcAcadPlan']] = $next_plan['description'];
+        }
+      }
+      asort($programs);
+      return $programs;      
+    }
+  );
 
-  return $theme;
+  return;    
 }
+
+
+function azgrad_drupal_webform_elements_webform_options_ua_doctoral_minors_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/simpleplans.json',
+    'ua_doctoral_minors',
+    function(array $response) {
+      $programs = [];
+      foreach ($response as $next_plan) {
+        $is_minor = strpos($next_plan['acadPlan'], 'MING') > 0;
+        if ($is_minor) {
+          $programs[$next_plan['gcAcadPlan']] = $next_plan['description'];
+        }
+      }
+      asort($programs);
+      return $programs;      
+    }
+  );
+
+  return;  
+}    
+
+
+function azgrad_drupal_webform_elements_webform_options_ua_degree_seeking_plans_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/simpleplans.json',
+    'ua_degree_seeking_plans',
+    function(array $response) {
+      $programs = [];
+      foreach ($response as $next_plan) {
+        $programs[$next_plan['gcAcadPlan']] = $next_plan['description'];
+      }
+      asort($programs);
+      return $programs;      
+    }
+  );
+
+  return;
+
+}
+
+function azgrad_drupal_webform_elements_webform_options_ua_masters_plans_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/simpleplans.json',
+    'ua_masters_plans',
+    function(array $response) {
+      $programs = [];
+      foreach ($response as $next_plan) {
+        if ($next_plan['degreeType'] == 'Masters') {
+          $programs[$next_plan['gcAcadPlan']] = $next_plan['description'];
+        }
+      }
+      asort($programs);
+      return $programs;      
+    }
+  );
+
+  return;
+}
+
+
+function azgrad_drupal_webform_elements_webform_options_ua_certificate_plans_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/simpleplans.json',
+    'ua_certificate_plans',
+    function(array $response) {
+      $programs = [];
+      foreach ($response as $next_plan) {
+        if ($next_plan['degreeType'] == 'Certificate') {
+          $programs[$next_plan['gcAcadPlan']] = $next_plan['description'];
+        }
+      }
+      asort($programs);
+      return $programs;      
+    }
+  );
+
+  return;  
+}
+
+function azgrad_drupal_webform_elements_webform_options_ua_terms_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/terms.json',
+    'ua_terms',
+    function(array $response) {
+      $terms = [];
+      foreach ($response as $next_term) {
+        if (!empty($next_term['term']) && $next_term['term'] != '1011') {
+          $terms[$next_term['term']] = $next_term['descr'];
+        }
+      }
+      ksort($terms, SORT_NUMERIC);
+      return $terms;      
+    }
+  );
+
+  return;
+}
+
+
+function azgrad_drupal_webform_elements_webform_options_ua_current_and_future_terms_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/terms.json',
+    'ua_current_and_future_terms',
+    function(array $response) {
+      $terms = [];
+      $now = time();
+    
+      foreach ($response as $next_term) {
+        $term_end = strtotime($next_term['endDate']);
+        if (!empty($next_term['term']) && ($term_end >= $now)) {
+          $terms[$next_term['term']] = $next_term['descr'];
+        }
+      }
+      ksort($terms, SORT_NUMERIC);
+      return $terms;      
+    }
+  );  
+
+  return;
+}
+
+function azgrad_drupal_webform_elements_webform_options_ua_campuses_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/campuses.json',
+    'ua_campuses',
+    function(array $response) {
+      $campuses = [];
+      foreach ($response as $next_campus) {
+        if (!empty($next_campus['campus'])) {
+          $campuses[$next_campus['campus']] = $next_campus['descr'];
+        }
+      }
+      asort($campuses);
+      return $campuses;      
+    }
+  );
+  
+  return;
+}
+
+
+function azgrad_drupal_webform_elements_webform_options_ua_locations_alter(array &$options, array &$element) {
+  azgrad_drupal_webform_elements_get_options(
+    $options,
+    'https://cloud.grad.arizona.edu/data/directory/locations.json',
+    'ua_locations',
+    function(array $response) {
+      $locations = [];
+      foreach ($response as $next_location) {
+        if (!empty($next_location['location'])) {
+          $locations[$next_location['location']] = $next_location['descr'];
+        }
+      }
+      asort($locations);
+      return $locations;      
+    }
+  );
+  
+  return;  
+}
+
+
+function azgrad_drupal_webform_elements_get_options(array &$options, string $url, string $cache_key, Closure $filter_callback){
+  // Load cached options.  
+  if ($cache = \Drupal::cache()->get($cache_key)) {
+    $options = $cache->data;
+    return;
+  }
+  
+
+  $response = json_decode(file_get_contents($url), TRUE);
+
+  if (!$response) {
+    $response = [];
+  }
+
+  $filtered_response = $filter_callback($response);
+  $options = $filtered_response;
+  \Drupal::cache()->set($cache_key, $options);  
+
+  return;  
+} 
