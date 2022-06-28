@@ -163,7 +163,7 @@ function azgrad_drupal_webform_elements_webform_options_ua_campuses_alter(array 
     function(array $response) {
       $campuses = [];
       foreach ($response as $next_campus) {
-        if (!empty($next_campus['campus'])) {
+        if (!empty($next_campus['campus']) && !empty($next_campus['descr'])) {
           $campuses[$next_campus['campus']] = $next_campus['descr'];
         }
       }
@@ -184,7 +184,7 @@ function azgrad_drupal_webform_elements_webform_options_ua_locations_alter(array
     function(array $response) {
       $locations = [];
       foreach ($response as $next_location) {
-        if (!empty($next_location['location'])) {
+        if (!empty($next_location['location']) && !empty($next_location['descr'])) {
           $locations[$next_location['location']] = $next_location['descr'];
         }
       }
