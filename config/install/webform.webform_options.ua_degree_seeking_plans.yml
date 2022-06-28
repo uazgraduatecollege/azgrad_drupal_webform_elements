@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ua_degree_seeking_plans
+label: 'UA Degree Seeking Plans'
+category: ''
+likert: false
+options: ''
