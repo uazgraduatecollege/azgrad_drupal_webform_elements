@@ -6,3 +6,5 @@ package: UA Grad College
 dependencies:
   - drupal:webform
   - webform_options_custom
+  - webform_node
+  - menu_ui
