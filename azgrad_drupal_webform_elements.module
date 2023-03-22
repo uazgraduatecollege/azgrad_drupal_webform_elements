@@ -8,6 +8,18 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
+ * Not strictly related to this module, but the webform node module has
+ * been updated to make the author name automatically visible on the node,
+ * which we don't want. This function will run when this module is installed
+ * changing that setting back to false.
+ */
+function azgrad_drupal_webform_elements_install() {
+  $config = \Drupal::configFactory()->getEditable('node.type.webform');
+  $config->set('display_submitted', FALSE);
+  $config->save();
+}
+
+/**
  * @return Array of all active plans
  */
 function azgrad_drupal_webform_elements_webform_options_ua_graduate_plans_alter(array &$options, array &$element) {
