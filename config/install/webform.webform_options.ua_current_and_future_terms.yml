@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_current_and_future_terms
+id: uaz_current_and_future_terms
 label: 'UA Current and Future Terms'
 category: ''
 likert: false

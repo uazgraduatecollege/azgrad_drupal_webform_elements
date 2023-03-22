@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_masters_plans
+id: uaz_masters_plans
 label: 'UA Masters Plans'
 category: ''
 likert: false

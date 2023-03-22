@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_doctoral_plans
+id: uaz_doctoral_plans
 label: 'UA Doctoral Plans'
 category: ''
 likert: false

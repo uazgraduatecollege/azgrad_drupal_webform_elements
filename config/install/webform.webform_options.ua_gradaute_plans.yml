@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_graduate_plans
+id: uaz_graduate_plans
 label: 'UA Graduate Plans (all)'
 category: ''
 likert: false

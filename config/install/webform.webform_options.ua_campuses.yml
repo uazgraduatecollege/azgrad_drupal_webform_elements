@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_campuses
+id: uaz_campuses
 label: 'UA Campuses'
 category: ''
 likert: false

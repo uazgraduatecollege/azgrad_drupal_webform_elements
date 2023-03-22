@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_locations
+id: uaz_locations
 label: 'UA Locations'
 category: ''
 likert: false

@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_accelerated_masters_plans
+id: uaz_accelerated_masters_plans
 label: 'UA Accelerated Masters Plans'
 category: ''
 likert: false

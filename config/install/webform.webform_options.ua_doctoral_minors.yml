@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_doctoral_minors
+id: uaz_doctoral_minors
 label: 'UA Doctoral Minors'
 category: ''
 likert: false

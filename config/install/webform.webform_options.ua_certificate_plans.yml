@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ua_certificate_plans
+id: uaz_certificate_plans
 label: 'UA Certificate Plans'
 category: ''
 likert: false
