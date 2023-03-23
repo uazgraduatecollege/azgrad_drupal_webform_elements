@@ -1,4 +1,11 @@
 # AZ Grad College Webform Elements
+
+## PROJECT DEPRECATED
+
+**This project has been superseded by [AZ Grad Webform Components](https://github.com/uazgraduatecollege/azgrad_drupal_webform_components)**
+
+
+
 ## For Quickstart 2 / Drupal 9+
 
 Provides webform elements, especially select options, from dynamic JSON sources.
